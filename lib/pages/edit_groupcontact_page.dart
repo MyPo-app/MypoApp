@@ -20,6 +20,9 @@ class EditGroup extends StatefulWidget {
   _EditGroupState createState() => _EditGroupState();
 }
 
+/**
+ * find the name from a number in the phone contact
+ */
 String findName(String me, Iterable<Contact> contact) {
   Iterator<Contact> it = contact.iterator;
   while (it.moveNext()) {

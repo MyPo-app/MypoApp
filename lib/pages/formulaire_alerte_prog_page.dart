@@ -73,6 +73,9 @@ class _ProgState extends State<ProgForm> {
     super.dispose();
   }
 
+  /***
+   * save the new object to hive
+   */
   saveToHive() {
     if ((contactController.text != '' || alertGroup.length > 0) &&
         alertContent.text != '' &&

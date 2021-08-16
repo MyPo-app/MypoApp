@@ -72,6 +72,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
     super.dispose();
   }
 
+  /**
+   * update the fields in hive
+   */
   saveUserToHive(User_hive? User) {
     if (prenomController.text != '' &&
         nomController.text != '' &&

@@ -33,6 +33,9 @@ class _GroupFormState extends State<GroupForm> {
     super.dispose();
   }
 
+  /**
+   * find a number from a name in a contact list
+   */
   int findNumber(String name) {
     for (int i = 0; i < nameList.length; i++) {
       if (name == nameList[i]) {
@@ -92,6 +95,9 @@ class _GroupFormState extends State<GroupForm> {
         : Text("Pas encore de contact dans le groupe");
   }
 
+  /**
+   * find the name in the contact list from a phone number
+   */
   String findName(String val) {
     if (itc != null) {
       Iterator<Contact> it = itc.iterator;

@@ -112,6 +112,9 @@ class _ScheduledmsgDetailPageState extends State<ScheduledmsgDetailPage> {
     this.hasChanged = true;
   }
 
+  /**
+   * save the changes to hive
+   */
   void saveChanges() {
     widget.message.name = alertName.text;
     widget.message.phoneNumber = alertContact.text;

@@ -111,6 +111,9 @@ class _FormState extends State<FormScreen> {
     return contient[a.contient];
   }
 
+  /**
+   * we save the new alert in the Hive DB
+   */
   void saveAlert(String title, String content, var days, var cibles, bool notif,
       List<AlertKey> keys) async {
     List<AlertKey> hivekey = <AlertKey>[];

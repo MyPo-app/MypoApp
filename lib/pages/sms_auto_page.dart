@@ -620,6 +620,9 @@ bool isActive(String? body, Alert alert, bool isInContact) {
   return res;
 }
 
+/***
+ * function that check if a number is in the contact lsit of the phone
+ */
 Future<bool> isContactInContactList(SmsMessage message) async {
   List<Contact> _contacts =
       (await ContactsService.getContacts(withThumbnails: false)).toList();

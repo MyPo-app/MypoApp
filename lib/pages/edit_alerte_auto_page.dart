@@ -84,6 +84,10 @@ class _AlertScreenState extends State<AlertScreen> {
     return contient[a.contient];
   }
 
+  /**
+   * get the color from an alert key
+   * (green or white)
+   */
   Color getColorDropDown(AlertKey a) {
     if (a.allow) {
       return d_green;
@@ -110,6 +114,10 @@ class _AlertScreenState extends State<AlertScreen> {
     return true;
   }
 
+  /**
+   * function that automaticaly check and unchecks the cibles 
+   * checkboxes
+   */
   verifieCibles(List<dynamic> cibles) {
     for (int i = 0; i < cibles.length; i++) {
       if (cibles[0] == true && cibles[i] == false) {
