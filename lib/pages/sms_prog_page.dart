@@ -38,6 +38,9 @@ class _SmsProgState extends State<SmsProg> {
             });
   }
 
+  /*
+  saving the sending of a scheduled messages in a Rapport via hive object
+  */
   saveMsgToRapport(Scheduledmsg_hive message) {
     final messageToRapport = Rapportmsg_hive()
       ..name = message.name
@@ -49,6 +52,10 @@ class _SmsProgState extends State<SmsProg> {
     box.add(messageToRapport);
   }
 
+  /**
+  * Sending a scheduled essages to a group of contact or a phone number
+  this function is called in sendSms()
+  */
   void send(Scheduledmsg_hive msg) async {
     if (msg.groupContact.isEmpty) {
       Telephony.instance.sendSms(to: msg.phoneNumber, message: msg.message);
@@ -68,6 +75,10 @@ class _SmsProgState extends State<SmsProg> {
     }
   }
 
+  /**
+   * function that will check each 20 seconds if a scheduled messages needs to be send, it also check
+   * if a notification needs to be raised
+   */
   void sendSms() async {
     List<Scheduledmsg_hive> messages =
         Boxes.getScheduledmsg().values.toList().cast<Scheduledmsg_hive>();
@@ -97,6 +108,9 @@ class _SmsProgState extends State<SmsProg> {
     }
   }
 
+  /**
+   * function used in the "compte à rebours"  
+   */
   bool fiveMinutesBeforeSend(Scheduledmsg_hive msg) {
     int five_minutes = 300000;
     if (DateTime.now().millisecondsSinceEpoch + five_minutes >=
@@ -106,6 +120,10 @@ class _SmsProgState extends State<SmsProg> {
     return false;
   }
 
+  /**
+   * function that will update the date of a scheduled messages based
+   * on his reccurency
+   */
   void updateDate(Scheduledmsg_hive msg) {
     final repeatOptions = [
       'Toutes les heures',
@@ -135,6 +153,10 @@ class _SmsProgState extends State<SmsProg> {
     msg.save();
   }
 
+  /*
+  function that check the date of a scheduled messages to the current date to know 
+  if we need to send the messages or not
+  */
   bool canbeSent(Scheduledmsg_hive msg) {
     int now = DateTime.now().millisecondsSinceEpoch;
     int msgdate = msg.date.millisecondsSinceEpoch;
@@ -152,6 +174,9 @@ class _SmsProgState extends State<SmsProg> {
     }
   }
 
+  /**
+   * function used to display notification it is from the notification package
+   */
   Future<void> _showNotification(
       String number, List<GroupContact> list, String body) async {
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
@@ -197,6 +222,10 @@ class _SmsProgState extends State<SmsProg> {
         .show(0, title, body, platformChannelSpecifics, payload: 'item x');
   }
 
+  /**
+   * function that displays a pop up used in the "confirmer avant envoi"
+   * it will wait until the user confirm to send the message
+   */
   confirmSend(Scheduledmsg_hive msg) {
     timer!.cancel();
     bool notif = msg.notification;
@@ -257,6 +286,9 @@ class _SmsProgState extends State<SmsProg> {
         });
   }
 
+  /**
+   * List that displays the list of scheduled msg
+   */
   myList(List<Scheduledmsg_hive> alerts, int lenght, BuildContext context) {
     return lenght > 0
         ? ListView.builder(
@@ -272,7 +304,9 @@ class _SmsProgState extends State<SmsProg> {
 
   Future<List> callAsyncFetch() =>
       Future.delayed(Duration(milliseconds: 1), () => alerts);
-
+  /**
+   * display a single message
+   */
   Widget buildMsg(BuildContext context, Scheduledmsg_hive message) {
     return Card(
       margin: EdgeInsets.fromLTRB(5, 5, 20, 5),
@@ -297,6 +331,9 @@ class _SmsProgState extends State<SmsProg> {
     );
   }
 
+  /**
+   * function used in duplication
+   */
   void addToDB(Scheduledmsg_hive alert, String title) async {
     Scheduledmsg_hive msg = Scheduledmsg_hive()
       ..name = alert.name
@@ -313,6 +350,9 @@ class _SmsProgState extends State<SmsProg> {
     box.add(msg);
   }
 
+  /**
+   * function used to get the new title of a duplicated scheduled_msgS
+   */
   String getNbAlerte(String title) {
     int highest = 0;
     for (int i = 0; i < this.alerts.length; i++) {
