@@ -402,6 +402,7 @@ class _ProgState extends State<ProgForm> {
                       child: TextField(
                         minLines: 1,
                         maxLines: 1,
+                        readOnly: true,
                         maxLengthEnforcement: MaxLengthEnforcement.enforced,
                         keyboardType: TextInputType.text,
                         controller: groupcontactcontroller,
