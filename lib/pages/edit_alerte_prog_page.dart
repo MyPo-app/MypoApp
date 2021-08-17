@@ -465,6 +465,7 @@ class _ScheduledmsgDetailPageState extends State<ScheduledmsgDetailPage> {
                               onPressed: () => {
                                     showDialog(
                                         context: context,
+                                        barrierDismissible: false,
                                         builder: (context) {
                                           return MyDialog(
                                             contactgroup: contactgroup,

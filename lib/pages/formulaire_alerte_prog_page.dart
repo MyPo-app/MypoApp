@@ -413,6 +413,7 @@ class _ProgState extends State<ProgForm> {
                             suffixIcon: IconButton(
                                 onPressed: () => {
                                       showDialog(
+                                          barrierDismissible: false,
                                           context: context,
                                           builder: (context) {
                                             return MyDialog(

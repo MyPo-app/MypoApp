@@ -683,6 +683,8 @@ class _FormState extends State<FormScreen> {
                                                   {
                                                     showDialog(
                                                         context: context,
+                                                        barrierDismissible:
+                                                            false,
                                                         builder: (context) {
                                                           return MyDialog(
                                                             contactgroup:

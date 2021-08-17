@@ -688,6 +688,7 @@ class _AlertScreenState extends State<AlertScreen> {
                                               if (widget.alerte.cibles[4])
                                                 {
                                                   showDialog(
+                                                      barrierDismissible: false,
                                                       context: context,
                                                       builder: (context) {
                                                         return MyDialog(
