@@ -96,6 +96,9 @@ class _ScheduledmsgDetailPageState extends State<ScheduledmsgDetailPage> {
     alertContent.addListener(() {
       changed;
     });
+    groupcontactcontroller.addListener(() {
+      changed;
+    });
     // debugPrint(widget.message.status.toString());
   }
 
@@ -418,7 +421,7 @@ class _ScheduledmsgDetailPageState extends State<ScheduledmsgDetailPage> {
                                 debugPrint(e.toString());
                               }
                             }),
-                        labelStyle: TextStyle(color: Colors.black),
+                        labelStyle: TextStyle(color: Colors.grey),
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: BorderSide(color: Colors.transparent)),
